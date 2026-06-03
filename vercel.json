@@ -1,5 +1,0 @@
-{
-    "rewrites": [
-          { "source": "/", "destination": "/assorted-hub-v17.html" }
-    ]
-}
