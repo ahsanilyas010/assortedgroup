@@ -1295,17 +1295,6 @@ document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.obs
     setLoading(true);
     hideStatus();
 
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwKgxrpef5ZgN46gz53MFgmjvmsb3B1xvWlTp8sSnNhqusu-ZQKIUylSVLL3DIZy-Eo/exec') {
-      // Demo mode — log to console when not yet configured
-      console.log('Application data:', data);
-      setTimeout(function () {
-        setLoading(false);
-        showStatus('Demo mode: application logged to console. Configure your Google Apps Script URL to enable live submissions.', 'success');
-        form.reset();
-      }, 800);
-      return;
-    }
-
     fetch(APPS_SCRIPT_URL, {
       method: 'POST',
       mode: 'no-cors',
