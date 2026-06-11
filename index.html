@@ -570,6 +570,160 @@ footer {
   footer { flex-direction: column; gap: 1.5rem; padding: 2rem 1.5rem; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
 }
+
+/* ── CAREERS ── */
+.careers-wrap {
+  background: var(--off);
+  border-top: 1px solid var(--border);
+  padding: 6rem 4rem;
+}
+
+.careers-inner {
+  max-width: 1360px; margin: 0 auto;
+  display: grid; grid-template-columns: 0.9fr 1.1fr;
+  gap: 5rem; align-items: start;
+}
+
+.careers-info { position: sticky; top: 88px; }
+
+.careers-info .section-sub { max-width: 440px; }
+
+.careers-perks {
+  display: flex; flex-direction: column; gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.careers-perk {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.2rem 1.4rem;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+}
+
+.careers-perk-icon {
+  width: 38px; height: 38px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+
+.careers-perk-title { font-size: 0.82rem; font-weight: 700; color: var(--ink); margin-bottom: 0.2rem; }
+.careers-perk-desc  { font-size: 0.75rem; color: var(--muted); line-height: 1.6; }
+
+/* ── APPLICATION FORM ── */
+.app-form {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+
+.app-form-title {
+  font-size: 1.25rem; font-weight: 800; color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+
+.app-form-sub {
+  font-size: 0.78rem; color: var(--muted); margin-bottom: 2rem;
+}
+
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group.full { grid-column: 1 / -1; }
+
+.form-label {
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--ink);
+}
+
+.form-label span { color: var(--orange); margin-left: 2px; }
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem; color: var(--ink);
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+}
+
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(28,69,133,0.1);
+}
+
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.form-textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+
+.form-submit-row {
+  margin-top: 1.6rem;
+  display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+}
+
+.btn-submit {
+  padding: 0.85rem 2.4rem;
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 700;
+  border: none; border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+
+.btn-submit:hover { background: var(--navy2); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(28,69,133,0.25); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn-submit .spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.form-status {
+  font-size: 0.8rem; font-weight: 600; padding: 0.6rem 1rem;
+  border-radius: 6px; display: none;
+}
+.form-status.success { background: rgba(118,176,72,0.12); color: #3d7020; display: block; }
+.form-status.error   { background: rgba(243,111,41,0.12);  color: var(--orange2); display: block; }
+
+.form-privacy {
+  font-size: 0.72rem; color: var(--muted); margin-top: 1rem;
+  line-height: 1.6;
+}
+
+@media(max-width:960px) {
+  .careers-wrap { padding: 4rem 1.5rem; }
+  .careers-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .careers-info { position: static; }
+  .form-grid { grid-template-columns: 1fr; }
+  .app-form { padding: 1.8rem; }
+}
+
 </style>
 </head>
 <body>
@@ -584,6 +738,7 @@ footer {
     <li><a href="#about">About</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#careers">Careers</a></li>
   </ul>
   <a href="#contact" class="nav-btn">Get in Touch</a>
 </nav>
@@ -896,6 +1051,148 @@ footer {
   </div>
 </div>
 
+
+<!-- CAREERS -->
+<div class="careers-wrap" id="careers">
+  <div class="careers-inner">
+
+    <div class="careers-info reveal">
+      <div class="section-label label-green">Join Our Team</div>
+      <h2 class="section-title">Build Your<br>Career With Us</h2>
+      <p class="section-sub" style="margin-top:1rem;">
+        We're always looking for talented people to join our five integrated verticals. Fill out the form and we'll match you to the best opportunity across staffing, business, coworking, trade, and BPO.
+      </p>
+
+      <div class="careers-perks">
+        <div class="careers-perk">
+          <div class="careers-perk-icon cc-n">🌐</div>
+          <div>
+            <div class="careers-perk-title">Cross-Vertical Growth</div>
+            <div class="careers-perk-desc">Work across five dynamic business units and grow your career in multiple directions.</div>
+          </div>
+        </div>
+        <div class="careers-perk">
+          <div class="careers-perk-icon cc-g">📍</div>
+          <div>
+            <div class="careers-perk-title">Pakistan &amp; USA Presence</div>
+            <div class="careers-perk-desc">Opportunities in Islamabad and Hackettstown, NJ, with remote roles available.</div>
+          </div>
+        </div>
+        <div class="careers-perk">
+          <div class="careers-perk-icon cc-o">🚀</div>
+          <div>
+            <div class="careers-perk-title">Fast-Track Impact</div>
+            <div class="careers-perk-desc">Join a lean, high-ownership team where your contribution shapes real outcomes from day one.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-form reveal">
+      <div class="app-form-title">Submit Your Application</div>
+      <div class="app-form-sub">All fields marked <span style="color:var(--orange)">*</span> are required. We review every application within 3–5 business days.</div>
+
+      <form id="jobApplicationForm" novalidate>
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label class="form-label" for="app-name">Full Name <span>*</span></label>
+            <input class="form-input" id="app-name" name="fullName" type="text" placeholder="Jane Smith" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-email">Email Address <span>*</span></label>
+            <input class="form-input" id="app-email" name="email" type="email" placeholder="jane@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-phone">Phone Number <span>*</span></label>
+            <input class="form-input" id="app-phone" name="phone" type="tel" placeholder="+92 300 0000000">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-location">Current Location <span>*</span></label>
+            <input class="form-input" id="app-location" name="location" type="text" placeholder="City, Country" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-department">Department / Vertical <span>*</span></label>
+            <select class="form-select" id="app-department" name="department" required>
+              <option value="" disabled selected>Select a department</option>
+              <option value="Assorted Staffing">Assorted Staffing</option>
+              <option value="Assorted Business">Assorted Business</option>
+              <option value="Assorted Coworking">Assorted Coworking</option>
+              <option value="Assorted Produce Traders">Assorted Produce Traders</option>
+              <option value="Assorted BPO">Assorted BPO</option>
+              <option value="Any / Open to Opportunities">Any / Open to Opportunities</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-experience">Years of Experience <span>*</span></label>
+            <select class="form-select" id="app-experience" name="experience" required>
+              <option value="" disabled selected>Select range</option>
+              <option value="Less than 1 year">Less than 1 year</option>
+              <option value="1–3 years">1–3 years</option>
+              <option value="3–5 years">3–5 years</option>
+              <option value="5–10 years">5–10 years</option>
+              <option value="10+ years">10+ years</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="app-position">Position / Role You're Applying For <span>*</span></label>
+            <input class="form-input" id="app-position" name="position" type="text" placeholder="e.g. Recruitment Consultant, BPO Agent, Marketing Manager…" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-linkedin">LinkedIn Profile</label>
+            <input class="form-input" id="app-linkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/…">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-portfolio">Portfolio / CV Link</label>
+            <input class="form-input" id="app-portfolio" name="portfolio" type="url" placeholder="https://drive.google.com/…">
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="app-source">How Did You Hear About Us?</label>
+            <select class="form-select" id="app-source" name="source">
+              <option value="" disabled selected>Select an option</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Referral">Referral from a colleague</option>
+              <option value="Job Board">Job Board (Indeed, Rozee, etc.)</option>
+              <option value="Google Search">Google Search</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label class="form-label" for="app-cover">Cover Letter / Message <span>*</span></label>
+            <textarea class="form-textarea" id="app-cover" name="coverLetter" placeholder="Tell us about yourself, your experience, and why you'd like to join Assorted Group…" required></textarea>
+          </div>
+
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn-submit" id="appSubmitBtn">
+            <span class="spinner" id="appSpinner"></span>
+            <span id="appBtnText">Submit Application</span>
+          </button>
+          <div class="form-status" id="appFormStatus"></div>
+        </div>
+
+        <p class="form-privacy">
+          Your information is kept confidential and used solely for recruitment purposes. We do not share your data with third parties.
+        </p>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">
@@ -923,6 +1220,105 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+</script>
+
+
+<script>
+(function () {
+  // ── Replace this URL with your deployed Google Apps Script Web App URL ──
+  var APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+  var form   = document.getElementById('jobApplicationForm');
+  var btn    = document.getElementById('appSubmitBtn');
+  var spinner = document.getElementById('appSpinner');
+  var btnText = document.getElementById('appBtnText');
+  var status  = document.getElementById('appFormStatus');
+
+  if (!form) return;
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // Basic validation
+    var required = form.querySelectorAll('[required]');
+    var valid = true;
+    required.forEach(function (el) {
+      el.style.borderColor = '';
+      if (!el.value.trim()) {
+        el.style.borderColor = '#F36F29';
+        valid = false;
+      }
+    });
+
+    if (!valid) {
+      showStatus('Please fill in all required fields.', 'error');
+      return;
+    }
+
+    // Build payload
+    var data = {
+      timestamp: new Date().toISOString(),
+      fullName:     form.fullName.value.trim(),
+      email:        form.email.value.trim(),
+      phone:        form.phone.value.trim(),
+      location:     form.location.value.trim(),
+      department:   form.department.value,
+      experience:   form.experience.value,
+      position:     form.position.value.trim(),
+      linkedin:     form.linkedin.value.trim(),
+      portfolio:    form.portfolio.value.trim(),
+      source:       form.source.value,
+      coverLetter:  form.coverLetter.value.trim()
+    };
+
+    setLoading(true);
+    hideStatus();
+
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+      // Demo mode — log to console when not yet configured
+      console.log('Application data:', data);
+      setTimeout(function () {
+        setLoading(false);
+        showStatus('Demo mode: application logged to console. Configure your Google Apps Script URL to enable live submissions.', 'success');
+        form.reset();
+      }, 800);
+      return;
+    }
+
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    })
+    .then(function () {
+      setLoading(false);
+      showStatus('Application submitted successfully! We will be in touch within 3–5 business days.', 'success');
+      form.reset();
+    })
+    .catch(function () {
+      setLoading(false);
+      showStatus('Something went wrong. Please email your application directly to hello@assorted.group', 'error');
+    });
+  });
+
+  function setLoading(on) {
+    btn.disabled = on;
+    spinner.style.display = on ? 'block' : 'none';
+    btnText.textContent = on ? 'Submitting…' : 'Submit Application';
+  }
+
+  function showStatus(msg, type) {
+    status.textContent = msg;
+    status.className = 'form-status ' + type;
+    status.style.display = 'block';
+  }
+
+  function hideStatus() {
+    status.className = 'form-status';
+    status.style.display = 'none';
+  }
+})();
 </script>
 
 </body>
