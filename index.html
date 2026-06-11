@@ -1240,7 +1240,7 @@ document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.obs
 <script>
 (function () {
   // ── Replace this URL with your deployed Google Apps Script Web App URL ──
-  var APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKgxrpef5ZgN46gz53MFgmjvmsb3B1xvWlTp8sSnNhqusu-ZQKIUylSVLL3DIZy-Eo/exec';
 
   var form   = document.getElementById('jobApplicationForm');
   var btn    = document.getElementById('appSubmitBtn');
@@ -1288,7 +1288,7 @@ document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.obs
     setLoading(true);
     hideStatus();
 
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwKgxrpef5ZgN46gz53MFgmjvmsb3B1xvWlTp8sSnNhqusu-ZQKIUylSVLL3DIZy-Eo/exec') {
       // Demo mode — log to console when not yet configured
       console.log('Application data:', data);
       setTimeout(function () {
