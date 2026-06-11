@@ -67,6 +67,19 @@ nav {
 }
 .nav-btn:hover { background: var(--navy2); transform: translateY(-1px); }
 
+.nav-btn-careers {
+  padding: 0.65rem 1.8rem;
+  background: transparent;
+  color: var(--green2);
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  border-radius: 6px;
+  border: 1.5px solid var(--green);
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+.nav-btn-careers:hover { background: var(--green); color: var(--white); transform: translateY(-1px); }
+
 /* ── HERO ── */
 .hero {
   padding-top: 68px;
@@ -740,6 +753,7 @@ footer {
     <li><a href="#contact">Contact</a></li>
     <li><a href="#careers">Careers</a></li>
   </ul>
+  <a href="#careers" class="nav-btn-careers">We're Hiring</a>
   <a href="#contact" class="nav-btn">Get in Touch</a>
 </nav>
 
