@@ -69,6 +69,8 @@ nav {
 }
 .nav-btn:hover { background: var(--navy2); transform: translateY(-1px); }
 
+.nav-actions { display: flex; align-items: center; gap: 0.8rem; }
+
 .nav-btn-careers {
   padding: 0.65rem 1.8rem;
   background: transparent;
@@ -762,8 +764,10 @@ footer {
     <li><a href="#contact">Contact</a></li>
     <li><a href="#careers">Careers</a></li>
   </ul>
-  <a href="#careers" class="nav-btn-careers">We're Hiring</a>
-  <a href="#contact" class="nav-btn">Get in Touch</a>
+  <div class="nav-actions">
+    <a href="#careers" class="nav-btn-careers">We're Hiring</a>
+    <a href="#contact" class="nav-btn">Get in Touch</a>
+  </div>
 </nav>
 
 <!-- HERO -->
