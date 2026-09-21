@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Assorted Group | Staffing, BPO, Coworking & Produce Export in Pakistan</title>
 <meta name="description" content="Assorted Group, Islamabad — recruitment & staffing, 24/7 BPO outsourcing, D-12 coworking space, fresh fruit export, digital marketing & consulting in Pakistan.">
@@ -328,7 +329,7 @@ h1.hero-title .accent-navy { color: var(--navy); }
   opacity: 0; animation: fadeUp 0.7s ease 0.35s forwards;
 }
 .hero-rotator-label {
-  font-size: 0.68rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--muted);
 }
 .hero-rotator-word {
@@ -407,11 +408,11 @@ h1.hero-title .accent-navy { color: var(--navy); }
 .hero-card-logo img { width: auto; max-width: 100%; object-fit: contain; }
 
 .hero-card-name {
-  font-size: 0.72rem; font-weight: 700;
+  font-size: 0.8rem; font-weight: 700;
   letter-spacing: 0.3px; color: var(--ink);
 }
 .hero-card-tag {
-  font-size: 0.62rem; font-weight: 500;
+  font-size: 0.75rem; font-weight: 500;
   color: var(--muted);
 }
 
@@ -445,7 +446,7 @@ h1.hero-title .accent-navy { color: var(--navy); }
 .strip-divider { color: rgba(255,255,255,0.2); font-size: 0.5rem; }
 
 /* ── SECTION SHARED ── */
-section { padding: 6rem 4rem; max-width: 1360px; margin: 0 auto; }
+section.content { padding: 6rem 4rem; max-width: 1360px; margin: 0 auto; }
 
 .section-label {
   font-size: 0.7rem; font-weight: 700;
@@ -762,11 +763,11 @@ footer {
   50%      { transform: translateY(-4px); opacity: 0.85; }
 }
 
-.footer-links { display: flex; gap: 2.5rem; list-style: none; }
-.footer-links a { font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.68); text-decoration: none; letter-spacing: 0.3px; transition: color 0.2s; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.9rem 1.6rem; list-style: none; }
+.footer-links a { display: inline-block; padding: 0.4rem 0; font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.68); text-decoration: none; letter-spacing: 0.3px; transition: color 0.2s; }
 .footer-links a:hover { color: var(--white); }
 
-.footer-copy { font-size: 0.68rem; color: rgba(255,255,255,0.58); }
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.58); }
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
@@ -778,14 +779,14 @@ footer {
   to   { opacity:1; }
 }
 
-.reveal {
+html.js .reveal {
   opacity:0; transform:translateY(24px); filter: blur(6px);
   transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
 }
-.reveal.visible { opacity:1; transform:translateY(0); filter: none; }
+html.js .reveal.visible { opacity:1; transform:translateY(0); filter: none; }
 
 /* stagger children */
-.reveal-stagger > * {
+html.js .reveal-stagger > * {
   opacity:0; transform:translateY(20px); filter: blur(6px);
   transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease;
 }
@@ -862,8 +863,8 @@ html.lenis, html.lenis body { height: auto; }
   .v-card:hover::after, .why-item:hover::after { animation: none; }
   .preloader-mark { animation-duration: 0.3s; }
   #preloader { animation-duration: 0.3s; animation-delay: 0.5s; }
-  .reveal, .reveal-stagger > * { filter: none; transition-duration: 0.25s !important; }
-  .reveal.visible, .reveal-stagger.visible > * { filter: none; }
+  html.js .reveal, html.js .reveal-stagger > * { filter: none; transition-duration: 0.25s !important; }
+  html.js .reveal.visible, html.js .reveal-stagger.visible > * { filter: none; }
 }
 
 /* ── MOBILE ── */
@@ -1165,11 +1166,11 @@ html.lenis, html.lenis body { height: auto; }
 </div>
 
 <!-- ABOUT -->
-<div class="about-wrap" id="about">
+<section class="about-wrap" id="about" aria-labelledby="about-title">
   <div class="about-inner">
     <div class="reveal">
       <div class="section-label label-navy">About Assorted Group</div>
-      <h2 class="section-title">Built for Modern Business. Rooted in Pakistan.</h2>
+      <h2 class="section-title" id="about-title">Built for Modern Business. Rooted in Pakistan.</h2>
       <p class="section-sub" style="margin-top:1rem;">
         Since our founding, we have grown from a single business into a multi-vertical group serving hundreds of clients — from SMEs to enterprise corporations. Our integrated model means our verticals work together, creating compounding value for every partner we serve.
       </p>
@@ -1193,14 +1194,14 @@ html.lenis, html.lenis body { height: auto; }
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- VERTICALS -->
-<div class="verticals-wrap" id="verticals">
+<section class="verticals-wrap" id="verticals" aria-labelledby="verticals-title">
   <div class="verticals-header reveal">
     <div>
       <div class="section-label label-green">Our Verticals</div>
-      <h2 class="section-title">Five Businesses,<br>One Ecosystem</h2>
+      <h2 class="section-title" id="verticals-title">Five Businesses,<br>One Ecosystem</h2>
     </div>
     <p style="font-size:0.9rem;color:var(--muted);max-width:320px;line-height:1.8;">
       Each vertical is independently powerful — together they're transformative.
@@ -1300,10 +1301,10 @@ html.lenis, html.lenis body { height: auto; }
     </a>
 
   </div>
-</div>
+</section>
 
 <!-- WHY US -->
-<div class="why-wrap" id="why">
+<section class="why-wrap" id="why" aria-labelledby="why-title">
   <div class="why-blobs" aria-hidden="true">
     <span class="blob blob-c"></span>
     <span class="blob blob-d"></span>
@@ -1312,7 +1313,7 @@ html.lenis, html.lenis body { height: auto; }
     <div class="why-header reveal">
       <div>
         <div class="section-label">The Advantage</div>
-        <h2 class="section-title">Why Assorted<br>Group</h2>
+        <h2 class="section-title" id="why-title">Why Assorted<br>Group</h2>
       </div>
       <p class="section-sub">
         We don't just offer services. We offer an integrated system — where each vertical amplifies the others to deliver outsized results for our clients.
@@ -1351,14 +1352,14 @@ html.lenis, html.lenis body { height: auto; }
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- CONTACT -->
-<div class="contact-wrap" id="contact">
+<section class="contact-wrap" id="contact" aria-labelledby="contact-title">
   <div class="contact-inner">
     <div class="reveal">
       <div class="section-label label-orange">Get In Touch</div>
-      <h2 class="section-title">Ready to Work<br>Together?</h2>
+      <h2 class="section-title" id="contact-title">Ready to Work<br>Together?</h2>
       <p class="section-sub" style="margin-top:1rem;margin-bottom:2rem;">
         Whether you need talent, workspace, outsourcing support, or a strategic partner — we want to hear from you. Reach out and we'll respond within one business day.
       </p>
@@ -1396,16 +1397,16 @@ html.lenis, html.lenis body { height: auto; }
 
     </div>
   </div>
-</div>
+</section>
 
 
 <!-- CAREERS -->
-<div class="careers-wrap" id="careers">
+<section class="careers-wrap" id="careers" aria-labelledby="careers-title">
   <div class="careers-inner">
 
     <div class="careers-info reveal">
       <div class="section-label label-green">Join Our Team</div>
-      <h2 class="section-title">Build Your<br>Career With Us</h2>
+      <h2 class="section-title" id="careers-title">Build Your<br>Career With Us</h2>
       <p class="section-sub" style="margin-top:1rem;">
         We're always looking for talented people to join our five integrated verticals. Fill out the form and we'll match you to the best opportunity across staffing, business, coworking, trade, and BPO.
       </p>
@@ -1537,7 +1538,7 @@ html.lenis, html.lenis body { height: auto; }
     </div>
 
   </div>
-</div>
+</section>
 
 
 </main>
@@ -1550,8 +1551,13 @@ html.lenis, html.lenis body { height: auto; }
   <ul class="footer-links">
     <li><a href="#verticals">Verticals</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="https://trade.assorted.group">Trade</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="https://staffing.assorted.group">Staffing</a></li>
+    <li><a href="https://digital.assorted.group">Business</a></li>
     <li><a href="https://coworking.assorted.group">Coworking</a></li>
+    <li><a href="https://trade.assorted.group">Trade</a></li>
+    <li><a href="https://assorted-business-llc.vercel.app">BPO</a></li>
+    <li><a href="#careers">Careers</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="footer-copy">© 2025 ASSORTED GROUP</div>
