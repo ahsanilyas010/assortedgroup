@@ -1074,6 +1074,33 @@ html.lenis, html.lenis body { height: auto; }
   line-height: 1.6;
 }
 
+/* CV upload (drag & drop or click) */
+.upload-zone {
+  border: 1.5px dashed var(--input);
+  border-radius: var(--radius-sm);
+  padding: 1.4rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: var(--background);
+  transition: border-color 0.2s, background 0.2s;
+}
+.upload-zone:hover, .upload-zone:focus-visible { border-color: var(--ring); outline: none; }
+.upload-zone.dragover { border-color: var(--orange); background: rgba(243,111,41,0.06); }
+.upload-zone p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin: 0; }
+.upload-zone strong { color: var(--navy); font-weight: 600; }
+.upload-zone .upload-hint { display: block; font-size: 0.75rem; margin-top: 0.25rem; }
+.field-error { display: none; font-size: 0.8125rem; color: var(--orange2); margin-top: 0.25rem; }
+
+/* Consent */
+.consent-row { display: flex; gap: 0.65rem; align-items: flex-start; }
+.consent-row input[type=checkbox] {
+  width: 1rem; height: 1rem; margin-top: 0.15rem; flex-shrink: 0; accent-color: var(--orange); cursor: pointer;
+}
+.consent-row label { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; cursor: pointer; }
+
+/* Honeypot: hidden from people, visible to naive bots */
+.hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+
 @media(max-width:960px) {
   .form-label, .form-privacy, .app-form-sub, .careers-perk-desc { font-size: 0.78rem; }
   .careers-wrap { padding: 4rem 1.5rem; }
@@ -1461,33 +1488,64 @@ html.lenis, html.lenis body { height: auto; }
       <div class="app-form-title">Submit Your Application</div>
       <div class="app-form-sub">All fields marked <span style="color:var(--orange)">*</span> are required. We review every application within 3–5 business days.</div>
 
-      <form id="jobApplicationForm" novalidate>
+      <form id="jobApplicationForm">
+        <div class="hp-field" aria-hidden="true">
+          <label for="app-website">Website</label>
+          <input id="app-website" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-grid">
 
           <div class="form-group">
-            <label class="form-label" for="app-name">Full Name <span>*</span></label>
-            <input class="form-input" id="app-name" name="fullName" type="text" placeholder="Jane Smith" required>
+            <label class="form-label" for="app-first">First Name <span>*</span></label>
+            <input class="form-input" id="app-first" type="text" required maxlength="80" autocomplete="given-name" placeholder="Jane">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-last">Last Name <span>*</span></label>
+            <input class="form-input" id="app-last" type="text" required maxlength="80" autocomplete="family-name" placeholder="Smith">
           </div>
 
           <div class="form-group">
             <label class="form-label" for="app-email">Email Address <span>*</span></label>
-            <input class="form-input" id="app-email" name="email" type="email" placeholder="jane@example.com" required>
+            <input class="form-input" id="app-email" type="email" required maxlength="254" autocomplete="email" placeholder="jane@example.com">
           </div>
 
           <div class="form-group">
             <label class="form-label" for="app-phone">Phone Number <span>*</span></label>
-            <input class="form-input" id="app-phone" name="phone" type="tel" placeholder="+92 300 0000000">
+            <input class="form-input" id="app-phone" type="tel" required maxlength="20" pattern="\+?[0-9 \(\)\-]{7,20}" title="Digits, spaces, +, - and brackets only (7–20 characters)" autocomplete="tel" placeholder="+92 300 0000000">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="app-location">Current Location <span>*</span></label>
-            <input class="form-input" id="app-location" name="location" type="text" placeholder="City, Country" required>
+            <label class="form-label" for="app-country">Current Location <span>*</span></label>
+            <select class="form-select" id="app-country" required>
+              <option value="">Select country</option>
+              <option>United Kingdom</option>
+              <option>United Arab Emirates</option>
+              <option>United States</option>
+              <option>Saudi Arabia</option>
+              <option>Canada</option>
+              <option>Australia</option>
+              <option>Germany</option>
+              <option>Singapore</option>
+              <option>Pakistan</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-relocation">Open to Relocation?</label>
+            <select class="form-select" id="app-relocation">
+              <option value="">Select</option>
+              <option>Yes — Internationally</option>
+              <option>Yes — Regionally</option>
+              <option>No — Remote Only</option>
+            </select>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="app-department">Department / Vertical <span>*</span></label>
-            <select class="form-select" id="app-department" name="department" required>
-              <option value="" disabled selected>Select a department</option>
+            <select class="form-select" id="app-department" required>
+              <option value="">Select a department</option>
               <option value="Assorted Staffing">Assorted Staffing</option>
               <option value="Assorted Business">Assorted Business</option>
               <option value="Assorted Coworking">Assorted Coworking</option>
@@ -1498,48 +1556,46 @@ html.lenis, html.lenis body { height: auto; }
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="app-experience">Years of Experience <span>*</span></label>
-            <select class="form-select" id="app-experience" name="experience" required>
-              <option value="" disabled selected>Select range</option>
-              <option value="Less than 1 year">Less than 1 year</option>
-              <option value="1–3 years">1–3 years</option>
-              <option value="3–5 years">3–5 years</option>
-              <option value="5–10 years">5–10 years</option>
+            <label class="form-label" for="app-experience">Years of Experience</label>
+            <select class="form-select" id="app-experience">
+              <option value="">Select range</option>
+              <option value="0-1 years">0–1 years</option>
+              <option value="1-3 years">1–3 years</option>
+              <option value="3-5 years">3–5 years</option>
+              <option value="5-10 years">5–10 years</option>
               <option value="10+ years">10+ years</option>
             </select>
           </div>
 
           <div class="form-group full">
-            <label class="form-label" for="app-position">Position / Role You're Applying For <span>*</span></label>
-            <input class="form-input" id="app-position" name="position" type="text" placeholder="e.g. Recruitment Consultant, BPO Agent, Marketing Manager…" required>
+            <label class="form-label" for="app-role">Position / Role You're Applying For <span>*</span></label>
+            <input class="form-input" id="app-role" type="text" required minlength="2" maxlength="200" placeholder="e.g. Recruitment Consultant, BPO Agent, Marketing Manager…">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="app-salary">Expected Salary / Rate</label>
+            <input class="form-input" id="app-salary" type="text" maxlength="100" placeholder="e.g. PKR 150k or $2,000/month">
           </div>
 
           <div class="form-group">
             <label class="form-label" for="app-linkedin">LinkedIn Profile</label>
-            <input class="form-input" id="app-linkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/…">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-portfolio">Portfolio / CV Link</label>
-            <input class="form-input" id="app-portfolio" name="portfolio" type="url" placeholder="https://drive.google.com/…">
+            <input class="form-input" id="app-linkedin" type="url" maxlength="300" pattern="https://([a-zA-Z]{2,3}\.)?linkedin\.com/.*" title="e.g. https://www.linkedin.com/in/your-name" placeholder="https://www.linkedin.com/in/your-name">
           </div>
 
           <div class="form-group full">
-            <label class="form-label" for="app-source">How Did You Hear About Us?</label>
-            <select class="form-select" id="app-source" name="source">
-              <option value="" disabled selected>Select an option</option>
-              <option value="LinkedIn">LinkedIn</option>
-              <option value="Referral">Referral from a colleague</option>
-              <option value="Job Board">Job Board (Indeed, Rozee, etc.)</option>
-              <option value="Google Search">Google Search</option>
-              <option value="Social Media">Social Media</option>
-              <option value="Other">Other</option>
-            </select>
+            <span class="form-label" id="app-cv-label">Upload CV / Resume <span>*</span></span>
+            <div class="upload-zone" id="appDropZone" role="button" tabindex="0" aria-labelledby="app-cv-label" aria-describedby="appCvError">
+              <p id="appDropText"><strong>Drag &amp; drop your CV here</strong> or <strong>click to browse</strong><span class="upload-hint">PDF, DOCX or DOC — max 10MB</span></p>
+              <input type="file" id="appCvFile" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
+            </div>
+            <div class="field-error" id="appCvError" role="alert"></div>
           </div>
 
           <div class="form-group full">
-            <label class="form-label" for="app-cover">Cover Letter / Message <span>*</span></label>
-            <textarea class="form-textarea" id="app-cover" name="coverLetter" placeholder="Tell us about yourself, your experience, and why you'd like to join Assorted Group…" required></textarea>
+            <div class="consent-row">
+              <input type="checkbox" id="app-consent" required>
+              <label for="app-consent">I consent to Assorted Group processing my personal data for recruitment purposes. My data will not be shared without my permission. <span>*</span></label>
+            </div>
           </div>
 
         </div>
@@ -1893,72 +1949,163 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
+// Careers form → Assorted HRM (same Supabase project and intake rules as
+// staffing.assorted.group "Register Your Profile"). The anon key is public by
+// design; Row Level Security only lets it upload a CV and insert a candidate.
 (function () {
-  // ── Replace this URL with your deployed Google Apps Script Web App URL ──
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKgxrpef5ZgN46gz53MFgmjvmsb3B1xvWlTp8sSnNhqusu-ZQKIUylSVLL3DIZy-Eo/exec';
+  var SUPABASE_URL = 'https://wqgjzeussogxoetispzq.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndxZ2p6ZXVzc29neG9ldGlzcHpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk2NDc3OTYsImV4cCI6MjEwNTIyMzc5Nn0.vc4NY_hVpSvtzaSMYVpXkK49zdQ12r6lKe7BdoBj91M';
+  var SOURCE_SITE = 'www.assorted.group';
+  var SUCCESS_MSG = 'Application submitted successfully! We will be in touch within 3–5 business days.';
 
-  var form   = document.getElementById('jobApplicationForm');
-  var btn    = document.getElementById('appSubmitBtn');
+  var CV_MAX_BYTES = 10 * 1024 * 1024;
+  var CV_TYPES = {
+    pdf: 'application/pdf',
+    doc: 'application/msword',
+    docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+  };
+
+  var form    = document.getElementById('jobApplicationForm');
+  var btn     = document.getElementById('appSubmitBtn');
   var spinner = document.getElementById('appSpinner');
   var btnText = document.getElementById('appBtnText');
   var status  = document.getElementById('appFormStatus');
+  var zone    = document.getElementById('appDropZone');
+  var fileIn  = document.getElementById('appCvFile');
+  var dropTxt = document.getElementById('appDropText');
+  var cvError = document.getElementById('appCvError');
 
   if (!form) return;
 
-  form.addEventListener('submit', function (e) {
+  var sb = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+  var defaultDropHtml = dropTxt.innerHTML;
+  var selectedFile = null;
+
+  // ── CV selection (click, keyboard or drag & drop) ──
+  function fileExt(name) {
+    var parts = name.toLowerCase().split('.');
+    return parts.length > 1 ? parts.pop() : '';
+  }
+
+  function showCvError(msg) {
+    cvError.textContent = msg;
+    cvError.style.display = msg ? 'block' : 'none';
+  }
+
+  function setCvFile(file) {
+    selectedFile = null;
+    dropTxt.innerHTML = defaultDropHtml;
+    if (!file) return;
+    if (!CV_TYPES[fileExt(file.name)]) { fileIn.value = ''; return showCvError('Please upload a PDF, DOC or DOCX file.'); }
+    if (file.size > CV_MAX_BYTES)       { fileIn.value = ''; return showCvError('Your CV is larger than 10MB. Please upload a smaller file.'); }
+    if (file.size === 0)                { fileIn.value = ''; return showCvError('That file is empty. Please choose your CV again.'); }
+    showCvError('');
+    selectedFile = file;
+    dropTxt.textContent = '';
+    var strong = document.createElement('strong');
+    strong.textContent = '✅ ' + file.name;
+    dropTxt.appendChild(strong);
+  }
+
+  zone.addEventListener('click', function () { fileIn.click(); });
+  zone.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileIn.click(); }
+  });
+  zone.addEventListener('dragover', function (e) { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', function () { zone.classList.remove('dragover'); });
+  zone.addEventListener('drop', function (e) {
     e.preventDefault();
+    zone.classList.remove('dragover');
+    setCvFile(e.dataTransfer.files[0] || null);
+  });
+  fileIn.addEventListener('change', function () { setCvFile(fileIn.files[0] || null); });
 
-    // Basic validation
-    var required = form.querySelectorAll('[required]');
-    var valid = true;
-    required.forEach(function (el) {
-      el.style.borderColor = '';
-      if (!el.value.trim()) {
-        el.style.borderColor = '#F36F29';
-        valid = false;
-      }
-    });
+  // ── Helpers ──
+  function valueOrNull(id) {
+    var v = document.getElementById(id).value.trim();
+    return v === '' ? null : v;
+  }
 
-    if (!valid) {
-      showStatus('Please fill in all required fields.', 'error');
+  function randomHex32() {
+    if (window.crypto && crypto.randomUUID) return crypto.randomUUID().replace(/-/g, '');
+    var bytes = new Uint8Array(16);
+    crypto.getRandomValues(bytes);
+    return Array.prototype.map.call(bytes, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  }
+
+  function friendlyError(err) {
+    var msg = (err && err.message) || '';
+    if (err && (err.code === '23505' || msg.indexOf('DUPLICATE_SUBMISSION') !== -1)) {
+      return 'We already received your application in the last 24 hours — we will be in touch soon.';
+    }
+    if (err && err.code === '23514' && msg) return msg;
+    if (/exceeded the maximum allowed size|payload too large|413/i.test(msg)) return 'Your CV is larger than 10MB. Please upload a smaller file.';
+    if (/mime type|invalid_mime_type/i.test(msg)) return 'Please upload a PDF, DOC or DOCX file.';
+    if (/failed to fetch|network/i.test(msg)) return 'Network error — please check your connection and try again.';
+    return 'Something went wrong. Please try again, or email your application to hello@assorted.group';
+  }
+
+  function succeed() {
+    showStatus(SUCCESS_MSG, 'success');
+    form.reset();
+    setCvFile(null);
+  }
+
+  // ── Submit: upload CV, then create the candidate (no read-back: anon can't select) ──
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    hideStatus();
+
+    // Honeypot: real visitors never see or fill this field
+    if (document.getElementById('app-website').value) return succeed();
+
+    if (!selectedFile) {
+      showCvError('Please upload your CV (PDF, DOC or DOCX, max 10MB).');
+      zone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      zone.focus();
       return;
     }
 
-    // Build payload
-    var data = {
-      timestamp: new Date().toISOString(),
-      fullName:     form.fullName.value.trim(),
-      email:        form.email.value.trim(),
-      phone:        form.phone.value.trim(),
-      location:     form.location.value.trim(),
-      department:   form.department.value,
-      experience:   form.experience.value,
-      position:     form.position.value.trim(),
-      linkedin:     form.linkedin.value.trim(),
-      portfolio:    form.portfolio.value.trim(),
-      source:       form.source.value,
-      coverLetter:  form.coverLetter.value.trim()
-    };
-
     setLoading(true);
-    hideStatus();
+    try {
+      if (!sb) throw new Error('Application service is unavailable. Please email your application to hello@assorted.group');
 
-    fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(data)
-    })
-    .then(function () {
+      var ext = fileExt(selectedFile.name);
+      var cvPath = Date.now() + '_' + randomHex32() + '.' + ext;
+      var up = await sb.storage.from('cvs').upload(cvPath, selectedFile, {
+        cacheControl: '3600', upsert: false, contentType: CV_TYPES[ext]
+      });
+      if (up.error) throw up.error;
+
+      var res = await sb.from('candidates').insert({
+        first_name: valueOrNull('app-first'),
+        last_name: valueOrNull('app-last'),
+        email: (valueOrNull('app-email') || '').toLowerCase() || null,
+        phone: valueOrNull('app-phone'),
+        country: valueOrNull('app-country'),
+        relocation_pref: valueOrNull('app-relocation'),
+        department: valueOrNull('app-department'),
+        preferred_role: valueOrNull('app-role'),
+        experience_years: valueOrNull('app-experience'),
+        salary_expectation: valueOrNull('app-salary'),
+        linkedin_url: valueOrNull('app-linkedin'),
+        cv_file_path: cvPath,
+        cv_file_name: selectedFile.name.slice(0, 255),
+        consent: document.getElementById('app-consent').checked,
+        source: 'website_form',
+        source_site: SOURCE_SITE
+      });
+      if (res.error) throw res.error;
+
+      succeed();
+    } catch (err) {
+      console.error('Application submission failed:', err);
+      showStatus(friendlyError(err), 'error');
+    } finally {
       setLoading(false);
-      showStatus('Application submitted successfully! We will be in touch within 3–5 business days.', 'success');
-      form.reset();
-    })
-    .catch(function () {
-      setLoading(false);
-      showStatus('Something went wrong. Please email your application directly to hello@assorted.group', 'error');
-    });
+    }
   });
 
   function setLoading(on) {
