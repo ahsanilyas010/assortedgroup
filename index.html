@@ -234,8 +234,7 @@ nav.nav-scrolled {
   box-shadow: var(--shadow-sm);
 }
 nav.nav-scrolled .nav-logo img { height: 36px; }
-nav.nav-scrolled .nav-btn,
-nav.nav-scrolled .nav-btn-careers { height: 2.125rem; }
+nav.nav-scrolled .nav-btn { height: 2.125rem; }
 
 .nav-logo { display: flex; align-items: center; }
 .nav-logo img {
@@ -268,20 +267,6 @@ nav.nav-scrolled .nav-btn-careers { height: 2.125rem; }
 .nav-btn:hover { background: var(--orange-hover); }
 
 .nav-actions { display: flex; align-items: center; gap: 0.8rem; }
-
-.nav-btn-careers {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  height: 2.25rem; padding: 0 1rem;
-  background: transparent;
-  color: var(--white);
-  font-size: 0.875rem; font-weight: 600;
-  text-decoration: none; white-space: nowrap;
-  border-radius: var(--radius-sm);
-  border: 2px solid var(--mist);
-  transition: background 0.2s, color 0.2s, height 0.25s ease;
-}
-.nav-btn-careers::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
-.nav-btn-careers:hover { background: var(--white); color: var(--navy); }
 
 /* ── HERO ── */
 .hero {
@@ -541,8 +526,8 @@ section.content { padding: 6rem 4rem; max-width: 1360px; margin: 0 auto; }
 }
 /* Eyebrows are Gear Blue everywhere (brand key); the old per-colour classes are kept in the markup. */
 .label-navy, .label-green, .label-orange { color: var(--blue); }
-/* Gear Blue on Cloud is 4.35:1, so the darker hover blue is used for eyebrows on Cloud sections. */
-.about-wrap .section-label, .careers-wrap .section-label { color: var(--blue2); }
+/* Gear Blue on Cloud is 4.35:1, so the darker hover blue is used for eyebrows on the Cloud About section. */
+.about-wrap .section-label { color: var(--blue2); }
 
 .section-title {
   font-size: clamp(2rem, 3.5vw, 3.2rem);
@@ -1008,7 +993,7 @@ html.lenis, html.lenis body { height: auto; }
 /* ── MOBILE ── */
 @media (max-width: 960px) {
   /* keep small-caps labels legible on phones (>= 12px) */
-  .strip-item, .section-label, .v-tag, .v-card-num, .cc-label, .form-label, .careers-perk-desc, .form-privacy, .app-form-sub { font-size: 0.78rem; }
+  .strip-item, .section-label, .v-tag, .v-card-num, .cc-label { font-size: 0.78rem; }
   .strip-divider { font-size: 0.75rem; }
   nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
@@ -1046,195 +1031,6 @@ html.lenis, html.lenis body { height: auto; }
   .social-row { justify-content: center; }
 }
 
-@media (max-width: 560px) {
-  .nav-btn-careers { display: none; }   /* Careers stays in the footer and the section nav */
-}
-
-/* ── CAREERS ── */
-.careers-wrap {
-  background: var(--off);
-  border-top: 1px solid var(--border);
-  padding: 6rem 4rem;
-}
-
-.careers-inner {
-  max-width: 1360px; margin: 0 auto;
-  display: grid; grid-template-columns: 0.9fr 1.1fr;
-  gap: 5rem; align-items: start;
-}
-
-.careers-info { position: sticky; top: 88px; }
-
-.careers-info .section-sub { max-width: 440px; }
-
-.careers-perks {
-  display: flex; flex-direction: column; gap: 1rem;
-  margin-top: 2.5rem;
-}
-
-.careers-perk {
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1rem 1.25rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-xs);
-}
-
-.careers-perk-icon {
-  width: 38px; height: 38px; border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; flex-shrink: 0;
-}
-
-.careers-perk-title { font-size: 0.875rem; font-weight: 600; color: var(--foreground); margin-bottom: 0.2rem; }
-.careers-perk-desc  { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; }
-
-/* ── APPLICATION FORM ── */
-.app-form {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-sm);
-}
-
-.app-form-title {
-  font-size: 1.25rem; font-weight: 600; color: var(--foreground); letter-spacing: -0.01em;
-  margin-bottom: 0.375rem;
-}
-
-.app-form-sub {
-  font-size: 0.875rem; color: var(--muted); margin-bottom: 1.75rem;
-}
-
-.form-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-}
-
-.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-.form-group.full { grid-column: 1 / -1; }
-
-.form-label {
-  font-size: 0.875rem; font-weight: 500; line-height: 1;
-  color: var(--foreground);
-}
-
-.form-label span { color: var(--orange2); margin-left: 2px; }
-
-.form-input, .form-select, .form-textarea {
-  width: 100%;
-  height: 2.5rem;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--input);
-  border-radius: var(--radius-sm);
-  font-family: 'Lexend', ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.875rem; color: var(--foreground);
-  background: var(--background);
-  box-shadow: var(--shadow-xs);
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none;
-  appearance: none;
-}
-
-.form-input::placeholder, .form-textarea::placeholder { color: var(--muted); }
-
-.form-input:focus-visible, .form-select:focus-visible, .form-textarea:focus-visible {
-  outline: none;
-  border-color: var(--ring);
-  box-shadow: 0 0 0 2px var(--background), 0 0 0 5px var(--ring);
-}
-
-.form-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  padding-right: 2.25rem;
-  cursor: pointer;
-}
-
-.form-textarea { height: auto; resize: vertical; min-height: 120px; line-height: 1.6; }
-
-.form-submit-row {
-  margin-top: 1.6rem;
-  display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
-}
-
-.btn-submit {
-  height: 2.5rem; padding: 0 1.5rem;
-  background: var(--blue);
-  color: var(--white);
-  font-family: 'Lexend', ui-sans-serif, system-ui, sans-serif;
-  font-size: 0.875rem; font-weight: 600;
-  border: none; border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-xs);
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-}
-
-.btn-submit:hover { background: var(--blue2); box-shadow: var(--shadow-sm); }
-.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-.btn-submit .spinner {
-  width: 16px; height: 16px;
-  border: 2px solid rgba(255,255,255,0.4);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-  display: none;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.form-status {
-  font-size: 0.875rem; font-weight: 500; padding: 0.5rem 0.875rem;
-  border-radius: var(--radius-sm); border: 1px solid transparent; display: none;
-}
-.form-status.success { background: rgba(76,184,72,0.12); color: var(--green2); border-color: rgba(76,184,72,0.35); display: block; }
-.form-status.error   { background: rgba(194,65,12,0.08);  color: var(--orange2); border-color: rgba(194,65,12,0.3); display: block; }
-
-.form-privacy {
-  font-size: 0.8125rem; color: var(--muted); margin-top: 1rem;
-  line-height: 1.6;
-}
-
-/* CV upload (drag & drop or click) */
-.upload-zone {
-  border: 1.5px dashed var(--input);
-  border-radius: var(--radius-sm);
-  padding: 1.4rem 1rem;
-  text-align: center;
-  cursor: pointer;
-  background: var(--background);
-  transition: border-color 0.2s, background 0.2s;
-}
-.upload-zone:hover, .upload-zone:focus-visible { border-color: var(--ring); outline: none; }
-.upload-zone.dragover { border-color: var(--blue); background: rgba(30,111,232,0.06); }
-.upload-zone p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; margin: 0; }
-.upload-zone strong { color: var(--navy); font-weight: 600; }
-.upload-zone .upload-hint { display: block; font-size: 0.75rem; margin-top: 0.25rem; }
-.field-error { display: none; font-size: 0.8125rem; color: var(--orange2); margin-top: 0.25rem; }
-
-/* Consent */
-.consent-row { display: flex; gap: 0.65rem; align-items: flex-start; }
-.consent-row input[type=checkbox] {
-  width: 1rem; height: 1rem; margin-top: 0.15rem; flex-shrink: 0; accent-color: var(--blue); cursor: pointer;
-}
-.consent-row label { font-size: 0.8125rem; color: var(--muted); line-height: 1.6; cursor: pointer; }
-
-/* Honeypot: hidden from people, visible to naive bots */
-.hp-field { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
-
-@media(max-width:960px) {
-  .form-label, .form-privacy, .app-form-sub, .careers-perk-desc { font-size: 0.78rem; }
-  .careers-wrap { padding: 4rem 1.5rem; }
-  .careers-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .careers-info { position: static; }
-  .form-grid { grid-template-columns: 1fr; }
-  .app-form { padding: 1.8rem; }
-}
 
 </style>
 </head>
@@ -1255,10 +1051,8 @@ html.lenis, html.lenis body { height: auto; }
     <li><a href="#about">About</a></li>
     <li><a href="#why">Why Us</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#careers">Careers</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="#careers" class="nav-btn-careers">We're Hiring</a>
     <a href="#contact" class="nav-btn">Get in Touch</a>
   </div>
 </nav>
@@ -1563,7 +1357,7 @@ html.lenis, html.lenis body { height: auto; }
       <p class="section-sub" style="margin-top:1rem;margin-bottom:2rem;">
         Whether you need talent, workspace, outsourcing support, or a strategic partner — we want to hear from you. Reach out and we'll respond within one business day.
       </p>
-      <!--email_off--><a href="mailto:hello@assorted.group" class="cta-solid" style="display:inline-block;">Send Us a Message</a><!--/email_off-->
+      <!--email_off--><a href="mailto:hello@assorted.group" class="cta-solid">Send Us a Message</a><!--/email_off-->
     </div>
     <div class="contact-cards reveal">
       <!--email_off--><a href="mailto:hello@assorted.group" class="contact-card">
@@ -1607,178 +1401,6 @@ html.lenis, html.lenis body { height: auto; }
 </section>
 
 
-<!-- CAREERS -->
-<section class="careers-wrap" id="careers" aria-labelledby="careers-title">
-  <div class="careers-inner">
-
-    <div class="careers-info reveal">
-      <div class="section-label label-green">Join Our Team</div>
-      <h2 class="section-title" id="careers-title">Build Your<br>Career With Us</h2>
-      <p class="section-sub" style="margin-top:1rem;">
-        We're always looking for talented people to join our four integrated verticals. Fill out the form and we'll match you to the best opportunity across business services, coworking, staffing, and produce trade.
-      </p>
-
-      <div class="careers-perks">
-        <div class="careers-perk">
-          <div class="careers-perk-icon cc-n">🌐</div>
-          <div>
-            <div class="careers-perk-title">Cross-Vertical Growth</div>
-            <div class="careers-perk-desc">Work across four dynamic business units and grow your career in multiple directions.</div>
-          </div>
-        </div>
-        <div class="careers-perk">
-          <div class="careers-perk-icon cc-g">📍</div>
-          <div>
-            <div class="careers-perk-title">International Presence</div>
-            <div class="careers-perk-desc">Opportunities across our offices, including Hackettstown, NJ, with remote roles available.</div>
-          </div>
-        </div>
-        <div class="careers-perk">
-          <div class="careers-perk-icon cc-o">🚀</div>
-          <div>
-            <div class="careers-perk-title">Fast-Track Impact</div>
-            <div class="careers-perk-desc">Join a lean, high-ownership team where your contribution shapes real outcomes from day one.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="app-form reveal">
-      <div class="app-form-title">Submit Your Application</div>
-      <div class="app-form-sub">All fields marked <span style="color:var(--orange2)">*</span> are required. We review every application within 3–5 business days.</div>
-
-      <form id="jobApplicationForm">
-        <div class="hp-field" aria-hidden="true">
-          <label for="app-website">Website</label>
-          <input id="app-website" type="text" tabindex="-1" autocomplete="off">
-        </div>
-        <div class="form-grid">
-
-          <div class="form-group">
-            <label class="form-label" for="app-first">First Name <span>*</span></label>
-            <input class="form-input" id="app-first" type="text" required maxlength="80" autocomplete="given-name" placeholder="Jane">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-last">Last Name <span>*</span></label>
-            <input class="form-input" id="app-last" type="text" required maxlength="80" autocomplete="family-name" placeholder="Smith">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-email">Email Address <span>*</span></label>
-            <input class="form-input" id="app-email" type="email" required maxlength="254" autocomplete="email" placeholder="jane@example.com">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-phone">Phone Number <span>*</span></label>
-            <input class="form-input" id="app-phone" type="tel" required maxlength="20" pattern="\+?[0-9 \(\)\-]{7,20}" title="Digits, spaces, +, - and brackets only (7–20 characters)" autocomplete="tel" placeholder="+92 300 0000000">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-country">Current Location <span>*</span></label>
-            <select class="form-select" id="app-country" required>
-              <option value="">Select country</option>
-              <option>United Kingdom</option>
-              <option>United Arab Emirates</option>
-              <option>United States</option>
-              <option>Saudi Arabia</option>
-              <option>Canada</option>
-              <option>Australia</option>
-              <option>Germany</option>
-              <option>Singapore</option>
-              <option>Pakistan</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-relocation">Open to Relocation?</label>
-            <select class="form-select" id="app-relocation">
-              <option value="">Select</option>
-              <option>Yes — Internationally</option>
-              <option>Yes — Regionally</option>
-              <option>No — Remote Only</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-department">Department / Vertical <span>*</span></label>
-            <select class="form-select" id="app-department" required>
-              <option value="">Select a department</option>
-              <option value="Assorted Business Services">Assorted Business Services</option>
-              <option value="ABS Digital Works">ABS Digital Works</option>
-              <option value="ABS BPO">ABS BPO</option>
-              <option value="Assorted Coworking">Assorted Coworking</option>
-              <option value="Assorted Staffing - Hiring Talent">Assorted Staffing — Hiring Talent</option>
-              <option value="Assorted Staffing - PR Agency">Assorted Staffing — PR Agency</option>
-              <option value="Assorted Produce Traders / Kamai.ai">Assorted Produce Traders / Kamai.ai</option>
-              <option value="Any / Open to Opportunities">Any / Open to Opportunities</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-experience">Years of Experience</label>
-            <select class="form-select" id="app-experience">
-              <option value="">Select range</option>
-              <option value="0-1 years">0–1 years</option>
-              <option value="1-3 years">1–3 years</option>
-              <option value="3-5 years">3–5 years</option>
-              <option value="5-10 years">5–10 years</option>
-              <option value="10+ years">10+ years</option>
-            </select>
-          </div>
-
-          <div class="form-group full">
-            <label class="form-label" for="app-role">Position / Role You're Applying For <span>*</span></label>
-            <input class="form-input" id="app-role" type="text" required minlength="2" maxlength="200" placeholder="e.g. Recruitment Consultant, BPO Agent, Marketing Manager…">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-salary">Expected Salary / Rate</label>
-            <input class="form-input" id="app-salary" type="text" maxlength="100" placeholder="e.g. PKR 150k or $2,000/month">
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="app-linkedin">LinkedIn Profile</label>
-            <input class="form-input" id="app-linkedin" type="url" maxlength="300" pattern="https://([a-zA-Z]{2,3}\.)?linkedin\.com/.*" title="e.g. https://www.linkedin.com/in/your-name" placeholder="https://www.linkedin.com/in/your-name">
-          </div>
-
-          <div class="form-group full">
-            <span class="form-label" id="app-cv-label">Upload CV / Resume <span>*</span></span>
-            <div class="upload-zone" id="appDropZone" role="button" tabindex="0" aria-labelledby="app-cv-label" aria-describedby="appCvError">
-              <p id="appDropText"><strong>Drag &amp; drop your CV here</strong> or <strong>click to browse</strong><span class="upload-hint">PDF, DOCX or DOC — max 10MB</span></p>
-              <input type="file" id="appCvFile" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
-            </div>
-            <div class="field-error" id="appCvError" role="alert"></div>
-          </div>
-
-          <div class="form-group full">
-            <div class="consent-row">
-              <input type="checkbox" id="app-consent" required>
-              <label for="app-consent">I consent to Assorted Group processing my personal data for recruitment purposes. My data will not be shared without my permission. <span>*</span></label>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form-submit-row">
-          <button type="submit" class="btn-submit" id="appSubmitBtn">
-            <span class="spinner" id="appSpinner"></span>
-            <span id="appBtnText">Submit Application</span>
-          </button>
-          <div class="form-status" id="appFormStatus"></div>
-        </div>
-
-        <p class="form-privacy">
-          Your information is kept confidential and used solely for recruitment purposes. We do not share your data with third parties.
-        </p>
-      </form>
-    </div>
-
-  </div>
-</section>
-
-
 </main>
 
 <!-- FOOTER -->
@@ -1803,7 +1425,6 @@ html.lenis, html.lenis body { height: auto; }
         <li><a href="https://coworking.assorted.group">Coworking</a></li>
         <li><a href="https://staffing.assorted.group">Staffing</a></li>
         <li><a href="https://trade.assorted.group">Produce Traders</a></li>
-        <li><a href="#careers">Careers</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -2034,7 +1655,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!supportsHover || reducedMotion) return;
 
     var strength = 0.35;
-    var targets = document.querySelectorAll('.cta-solid, .cta-outline, .nav-btn, .btn-submit, .v-card-link');
+    var targets = document.querySelectorAll('.cta-solid, .cta-outline, .nav-btn, .v-card-link');
 
     var invalidate = [];
     targets.forEach(function (el) {
@@ -2127,184 +1748,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script>
-// Careers form → Assorted HRM (same Supabase project and intake rules as
-// staffing.assorted.group "Register Your Profile"). The anon key is public by
-// design; Row Level Security only lets it upload a CV and insert a candidate.
-(function () {
-  var SUPABASE_URL = 'https://wqgjzeussogxoetispzq.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndxZ2p6ZXVzc29neG9ldGlzcHpxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk2NDc3OTYsImV4cCI6MjEwNTIyMzc5Nn0.vc4NY_hVpSvtzaSMYVpXkK49zdQ12r6lKe7BdoBj91M';
-  var SOURCE_SITE = 'www.assorted.group';
-  var SUCCESS_MSG = 'Application submitted successfully! We will be in touch within 3–5 business days.';
-
-  var CV_MAX_BYTES = 10 * 1024 * 1024;
-  var CV_TYPES = {
-    pdf: 'application/pdf',
-    doc: 'application/msword',
-    docx: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-  };
-
-  var form    = document.getElementById('jobApplicationForm');
-  var btn     = document.getElementById('appSubmitBtn');
-  var spinner = document.getElementById('appSpinner');
-  var btnText = document.getElementById('appBtnText');
-  var status  = document.getElementById('appFormStatus');
-  var zone    = document.getElementById('appDropZone');
-  var fileIn  = document.getElementById('appCvFile');
-  var dropTxt = document.getElementById('appDropText');
-  var cvError = document.getElementById('appCvError');
-
-  if (!form) return;
-
-  var sb = (typeof supabase !== 'undefined') ? supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
-  var defaultDropHtml = dropTxt.innerHTML;
-  var selectedFile = null;
-
-  // ── CV selection (click, keyboard or drag & drop) ──
-  function fileExt(name) {
-    var parts = name.toLowerCase().split('.');
-    return parts.length > 1 ? parts.pop() : '';
-  }
-
-  function showCvError(msg) {
-    cvError.textContent = msg;
-    cvError.style.display = msg ? 'block' : 'none';
-  }
-
-  function setCvFile(file) {
-    selectedFile = null;
-    dropTxt.innerHTML = defaultDropHtml;
-    if (!file) return;
-    if (!CV_TYPES[fileExt(file.name)]) { fileIn.value = ''; return showCvError('Please upload a PDF, DOC or DOCX file.'); }
-    if (file.size > CV_MAX_BYTES)       { fileIn.value = ''; return showCvError('Your CV is larger than 10MB. Please upload a smaller file.'); }
-    if (file.size === 0)                { fileIn.value = ''; return showCvError('That file is empty. Please choose your CV again.'); }
-    showCvError('');
-    selectedFile = file;
-    dropTxt.textContent = '';
-    var strong = document.createElement('strong');
-    strong.textContent = '✅ ' + file.name;
-    dropTxt.appendChild(strong);
-  }
-
-  zone.addEventListener('click', function () { fileIn.click(); });
-  zone.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fileIn.click(); }
-  });
-  zone.addEventListener('dragover', function (e) { e.preventDefault(); zone.classList.add('dragover'); });
-  zone.addEventListener('dragleave', function () { zone.classList.remove('dragover'); });
-  zone.addEventListener('drop', function (e) {
-    e.preventDefault();
-    zone.classList.remove('dragover');
-    setCvFile(e.dataTransfer.files[0] || null);
-  });
-  fileIn.addEventListener('change', function () { setCvFile(fileIn.files[0] || null); });
-
-  // ── Helpers ──
-  function valueOrNull(id) {
-    var v = document.getElementById(id).value.trim();
-    return v === '' ? null : v;
-  }
-
-  function randomHex32() {
-    if (window.crypto && crypto.randomUUID) return crypto.randomUUID().replace(/-/g, '');
-    var bytes = new Uint8Array(16);
-    crypto.getRandomValues(bytes);
-    return Array.prototype.map.call(bytes, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
-  }
-
-  function friendlyError(err) {
-    var msg = (err && err.message) || '';
-    if (err && (err.code === '23505' || msg.indexOf('DUPLICATE_SUBMISSION') !== -1)) {
-      return 'We already received your application in the last 24 hours — we will be in touch soon.';
-    }
-    if (err && err.code === '23514' && msg) return msg;
-    if (/exceeded the maximum allowed size|payload too large|413/i.test(msg)) return 'Your CV is larger than 10MB. Please upload a smaller file.';
-    if (/mime type|invalid_mime_type/i.test(msg)) return 'Please upload a PDF, DOC or DOCX file.';
-    if (/failed to fetch|network/i.test(msg)) return 'Network error — please check your connection and try again.';
-    return 'Something went wrong. Please try again, or email your application to hello@assorted.group';
-  }
-
-  function succeed() {
-    showStatus(SUCCESS_MSG, 'success');
-    form.reset();
-    setCvFile(null);
-  }
-
-  // ── Submit: upload CV, then create the candidate (no read-back: anon can't select) ──
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    hideStatus();
-
-    // Honeypot: real visitors never see or fill this field
-    if (document.getElementById('app-website').value) return succeed();
-
-    if (!selectedFile) {
-      showCvError('Please upload your CV (PDF, DOC or DOCX, max 10MB).');
-      zone.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      zone.focus();
-      return;
-    }
-
-    setLoading(true);
-    try {
-      if (!sb) throw new Error('Application service is unavailable. Please email your application to hello@assorted.group');
-
-      var ext = fileExt(selectedFile.name);
-      var cvPath = Date.now() + '_' + randomHex32() + '.' + ext;
-      var up = await sb.storage.from('cvs').upload(cvPath, selectedFile, {
-        cacheControl: '3600', upsert: false, contentType: CV_TYPES[ext]
-      });
-      if (up.error) throw up.error;
-
-      var res = await sb.from('candidates').insert({
-        first_name: valueOrNull('app-first'),
-        last_name: valueOrNull('app-last'),
-        email: (valueOrNull('app-email') || '').toLowerCase() || null,
-        phone: valueOrNull('app-phone'),
-        country: valueOrNull('app-country'),
-        relocation_pref: valueOrNull('app-relocation'),
-        department: valueOrNull('app-department'),
-        preferred_role: valueOrNull('app-role'),
-        experience_years: valueOrNull('app-experience'),
-        salary_expectation: valueOrNull('app-salary'),
-        linkedin_url: valueOrNull('app-linkedin'),
-        cv_file_path: cvPath,
-        cv_file_name: selectedFile.name.slice(0, 255),
-        consent: document.getElementById('app-consent').checked,
-        source: 'website_form',
-        source_site: SOURCE_SITE
-      });
-      if (res.error) throw res.error;
-
-      succeed();
-    } catch (err) {
-      console.error('Application submission failed:', err);
-      showStatus(friendlyError(err), 'error');
-    } finally {
-      setLoading(false);
-    }
-  });
-
-  function setLoading(on) {
-    btn.disabled = on;
-    spinner.style.display = on ? 'block' : 'none';
-    btnText.textContent = on ? 'Submitting…' : 'Submit Application';
-  }
-
-  function showStatus(msg, type) {
-    status.textContent = msg;
-    status.className = 'form-status ' + type;
-    status.style.display = 'block';
-  }
-
-  function hideStatus() {
-    status.className = 'form-status';
-    status.style.display = 'none';
-  }
-})();
-</script>
 
 </body>
 </html>
