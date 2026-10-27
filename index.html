@@ -405,35 +405,20 @@ h1.hero-title .accent-navy { color: var(--navy); }
   display: flex; align-items: center; justify-content: center;
 }
 
-.hub-halo {
-  position: absolute; left: 50%; top: 50%;
-  width: 55%; height: 55%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: conic-gradient(from 0deg, var(--blue), var(--green), var(--orange), var(--blue));
-  filter: blur(28px);
-  opacity: 0.4;
-  animation: glowSpin 9s linear infinite;
-  pointer-events: none;
-}
-
 .hub-pulse {
   position: absolute; left: 50%; top: 50%;
   width: 40%; height: 40%;
   border-radius: 50%;
-  border: 2px solid var(--blue);
+  border: 2px solid var(--input);   /* soft blue-grey ring */
   transform: translate(-50%, -50%) scale(1);
   opacity: 0;
-  animation: hubPulse 3.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  animation: hubPulse 3.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
   pointer-events: none;
 }
-.hub-pulse-2 { border-color: var(--green); animation-delay: 1.2s; }
-.hub-pulse-3 { border-color: var(--orange); animation-delay: 2.4s; }
 
 @keyframes hubPulse {
-  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0.65; }
-  70%  { opacity: 0.08; }
-  100% { transform: translate(-50%, -50%) scale(2.6);  opacity: 0; }
+  0%   { transform: translate(-50%, -50%) scale(1);   opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.7); opacity: 0; }
 }
 
 .hub-circle {
@@ -442,9 +427,9 @@ h1.hero-title .accent-navy { color: var(--navy); }
   min-width: 140px; min-height: 140px;
   border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
-  background: radial-gradient(circle at 35% 30%, var(--navy2), var(--navy) 65%);
+  background: var(--navy);
   box-shadow: 0 20px 45px -12px rgba(11,31,68,0.55), 0 0 0 10px rgba(255,255,255,0.9), 0 0 0 11px var(--border);
-  animation: hubBreathe 3.6s ease-in-out infinite;
+  animation: hubBreathe 3.2s ease-in-out infinite;
 }
 .hub-circle-mark {
   font-family: 'Lexend', ui-sans-serif, system-ui, sans-serif;
@@ -484,7 +469,7 @@ h1.hero-title .accent-navy { color: var(--navy); }
 
 @keyframes hubFloat {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
+  50%      { transform: translateY(-6px); }
 }
 
 /* ── LOGO STRIP ── */
@@ -983,7 +968,7 @@ html.lenis, html.lenis body { height: auto; }
   .blob { animation-duration: 60s !important; }
   .footer-logo img { animation-duration: 12s; }
   .v-card:hover::after, .why-item:hover::after { animation: none; }
-  .hub-halo, .hub-pulse, .hub-circle, .hub-badge { animation: none; }
+  .hub-pulse, .hub-circle, .hub-badge { animation: none; }
   .preloader-mark { animation-duration: 0.3s; }
   #preloader { animation-duration: 0.3s; animation-delay: 0.5s; }
   html.js .reveal, html.js .reveal-stagger > * { filter: none; transition-duration: 0.25s !important; }
@@ -1082,10 +1067,7 @@ html.lenis, html.lenis body { height: auto; }
   </div>
   <div class="hero-right">
     <div class="hero-hub">
-      <div class="hub-halo" aria-hidden="true"></div>
       <div class="hub-pulse hub-pulse-1" aria-hidden="true"></div>
-      <div class="hub-pulse hub-pulse-2" aria-hidden="true"></div>
-      <div class="hub-pulse hub-pulse-3" aria-hidden="true"></div>
       <div class="hub-circle">
         <span class="hub-circle-mark">Assorted<br>Group</span>
       </div>
